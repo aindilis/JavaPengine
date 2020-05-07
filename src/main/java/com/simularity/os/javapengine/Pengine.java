@@ -173,6 +173,11 @@ public final class Pengine {
 			// Send post request
 			con.setDoOutput(true);
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+
+			// Andy
+			System.err.println(body);
+
+
 			try {
 				wr.writeBytes(body);
 				wr.flush();
@@ -198,7 +203,10 @@ public final class Pengine {
 			}
 			
 			JsonReaderFactory jrf = Json.createReaderFactory(null);
+
 			JsonReader jr = jrf.createReader(new StringReader(response.toString()));
+		    	// Andy
+			System.err.println(response.toString());
 			JsonObject respObject = jr.readObject();
 			
 			return respObject;
@@ -395,6 +403,11 @@ public final class Pengine {
 		
 		state.setState(PSt.ASK);
 		try {
+		    	// Andy
+		    	System.err.println(po.getRequestBodyAsk(this.getID(), ask));
+			// Andy
+			System.err.println(po.getActualURL("send", this.getID()));
+
 			JsonObject answer =  penginePost(
 					po.getActualURL("send", this.getID()),
 					"application/x-prolog; charset=UTF-8",

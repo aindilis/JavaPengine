@@ -49,10 +49,16 @@ public abstract class ManualAsk {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+	    DoMain();
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void DoMain() {
 		PengineBuilder po = new PengineBuilder();
 		try {
-			po.setServer("http://localhost:9900/");
+			po.setServer("http://localhost:9881/");
 			Pengine p = po.newPengine();
 			p.dumpStateDebug();
 			for(Query q = p.ask("member(X, [a(taco),2,c])"); q.hasNext() ; ) {
